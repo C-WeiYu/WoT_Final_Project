@@ -8,10 +8,11 @@
   },
   "author": "",
   "license": "ISC",
-  "type":"module",
+  "type": "module",
   "dependencies": {
-      "socket.io": "*",
-      "express": "*"
-    }
-  
+    "express": "*",
+    "numpy": "^0.0.1",
+    "python-shell": "^3.0.1",
+    "socket.io": "*"
+  }
 }
