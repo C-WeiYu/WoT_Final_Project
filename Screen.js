@@ -13,8 +13,10 @@ let machine2 = {
     basket : ""
 };
 
+io().on('time1',function(time){
+    timer1 = time;
+})
 let index = 0 ; //for new machine name -> ex: Machine+${index}
-
 io().on('new_user', function (message) {
     console.log(message);
     switch(message.machine){
