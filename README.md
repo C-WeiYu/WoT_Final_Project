@@ -27,5 +27,5 @@ Node Server.js
 |朱筑筠|資科碩一|111753113|Test|[Juliachu1213](https://github.com/Juliachu1213)|
 |李家蓁|資科碩一|111753129|Test|[jennylee0915](https://github.com/jennylee0915)|
 |陳琪|國貿四|107301086|Test||
-|李佩璇|教育四|107102041|Test||
+|李佩璇|教育四|107102041|Test|[claire0201](https://github.com/claire0201)|
 |葉晉嘉|資管二甲|109ZU1011|Sensor|[moonshrimp](https://github.com/moonshrimp)|
