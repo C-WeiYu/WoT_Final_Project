@@ -18,6 +18,11 @@ npm install
 ```
 Node Server.js
 ```
+### Extra Step for MacOS
+* Change tesseract_cmd path in OCR.py (if you install pytesseract through homebrew)
+```
+pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
+```
 ### Contributors
 |組員|系級|學號|工作分配|github|
 |-|-|-|-|-|
