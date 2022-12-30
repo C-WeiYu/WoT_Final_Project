@@ -16,12 +16,10 @@ let board = new five.Board({
     port:"/dev/cu.usbmodem1101",
     repl:false
 });
-let machines=[]
 let origin_status = 0;
 let options={};
 let start = false;
 let users = 0;
-let last_time = 90;
 
 board.on("ready",function(){
     console.log("開始偵測")
@@ -29,9 +27,9 @@ board.on("ready",function(){
     board.digitalRead(8,function(value){
         console.log('value : ',value);
         if(origin_status == 1 && value == 0){  //一開始接上設備run就會先執行一次，所以第一次應該不算
-            //新增程式碼通知Screen
             io.sockets.emit('user_leave',"leave");
-
+            users -= 1 ;
+            console.log("User 人數 : ", users);
         }
         else{
             origin_status=1;
@@ -47,7 +45,8 @@ io.on('connection', function (socket) {
 
     socket.on('directive', function (message) {
         console.log(message);
-        users+=1
+        users += 1;
+        console.log("User 人數 : ", users);
         socket.broadcast.emit('new_user',message);
         if(start == false){
             start = true;
@@ -56,25 +55,24 @@ io.on('connection', function (socket) {
                     if(err) throw err;
                     let time_all = result.toString();
                     let time = time_all.substring(2,time_all.length-2);
-                    if(time > last_time){ //表示切到下一個使用者
-                        users -= 1;
-                        console.log("users : ",users);
-                    }
-                    if  (users == 1 && time == 0) {
-                        users -=1;
-                    }
-                    last_time = time;
+                    // if(time > last_time){ //表示切到下一個使用者
+                    //     users -= 1;
+                    //     console.log("users : ",users);
+                    // }
+                    // if  (users == 1 && time == 0) {
+                    //     users -=1;
+                    // }
+                    // last_time = time;
 
-                    if(users <= 0 && time == 0){
+                    if(users == 0 && time == 0){ //當沒人使用時，users=0，time應該也=0，關閉OCR機制，避免沒人但一直讀
                         start = false ;
-                        users=0;
-                        last_time=90;
+                        users = 0;
                         clearInterval(interval);
                     }
                     console.log('time : ',time);
                     socket.broadcast.emit('time1',time);
                 })
-            },20000);
+            },20000); //20000表示20秒 -> 每幾秒讀一次秒數在這裡這定
         }
  });
 });
