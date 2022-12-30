@@ -35,6 +35,9 @@ io.on('connection', function (socket) {
                         users -= 1;
                         console.log("users : ",users);
                     }
+                    if  (users == 1 && time == 0) {
+                        users -=1;
+                    }
                     last_time = time;
 
                     if(users <= 0 && time == 0){

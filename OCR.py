@@ -19,7 +19,7 @@ while(cap.isOpened()):
     
     frame = cv2.blur(frame, (5, 5))
     
-    ret, thresh = cv2.threshold(frame, 200, 255, cv2.THRESH_BINARY_INV)
+    ret, thresh = cv2.threshold(frame, 220, 255, cv2.THRESH_BINARY_INV)
     
     #若讀取至影片結尾，則跳出
     if not ret:
@@ -33,8 +33,9 @@ while(cap.isOpened()):
     #指定tesseract.exe執行檔位置
     text = pytesseract.image_to_string(thresh, lang='eng') #讀英文
     
-    if(re.compile('[0-9]+').match(text) != None):
-        print(re.findall('[0-9]+', text))
+    if(re.compile('[Oo0-9]+').match(text) != None):
+        text = int((re.findall('[Oo0-9]+', text))[0].lower().replace("o", "0"))
+        print(text)
         break
    
     #為每一毫秒偵測是否有從鍵盤輸入的訊號
