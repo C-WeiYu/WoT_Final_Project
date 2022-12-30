@@ -16,6 +16,11 @@ let machine2 = {
 io().on('time1',function(time){
     timer1 = time;
 })
+
+io().on('user_leave',function(message){
+    machine1.lock.shift();
+})
+
 let index = 0 ; //for new machine name -> ex: Machine+${index}
 io().on('new_user', function (message) {
     console.log(message);
