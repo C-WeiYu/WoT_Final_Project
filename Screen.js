@@ -50,10 +50,10 @@ let laundryInside;
 //無
 
 //計時器(1)變數
-let timer1 = 0; //畫面預設0，偵測到使用者後才開始從28倒數
+let timer1 = 90; //預設90，用來測試
 
 //計時器(2)變數
-let timer2 = 0; 
+let timer2 = 90; //預設90，用來測試
 
 //使用者
 let user1 = "";
