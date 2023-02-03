@@ -23,6 +23,9 @@ Node Server.js
 ```
 pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
 ```
+### Branch Different
+* main : Start countting by pressing button
+* branch-OCR : Reload time by using OCR automatically
 ### Contributors
 |組員|系級|學號|工作分配|github|
 |-|-|-|-|-|
